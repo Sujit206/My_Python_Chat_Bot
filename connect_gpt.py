@@ -1,12 +1,13 @@
 
 import streamlit as st
-from google import genai
 
-api_keys = "AIzaSyCse6MvPeXMlTAGLmt7C3JCJAHmqqNh3wc"
+
+
 
 def query(user_query):
 
-
+    from google import genai
+    api_keys = "AIzaSyCse6MvPeXMlTAGLmt7C3JCJAHmqqNh3wc"
     my_ai = genai.Client(api_key= api_keys)
 
     response = my_ai.models.generate_content(model="gemini-3-flash-preview", contents= user_query)
@@ -41,4 +42,5 @@ if user_input:
     st.session_state.message.append({
         "role" : "assistant",
         "msg" : result
+
     })
